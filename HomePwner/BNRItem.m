@@ -16,13 +16,17 @@
 + (id)randomItem
 {
     // Create an array of three adjectives
-    NSArray *randomAdjectiveList = [NSArray arrayWithObjects:@"Fluffy",
+    NSArray *randomAdjectiveList = [NSArray
+                                    arrayWithObjects:@"Fluffy",
                                     @"Rusty",
                                     @"Shiny", nil];
+    
     // Create an array of three nouns
-    NSArray *randomNounList = [NSArray arrayWithObjects:@"Bear",
+    NSArray *randomNounList = [NSArray
+                               arrayWithObjects:@"Bear",
                                @"Spork",
-                               @"Mac", nil];
+                               @"Mac",
+                               nil];
     // Get the index of a random adjective/noun from the lists
     // Note: The % operator, called the modulo operator, gives
     // you the remainder. So adjectiveIndex is a random number
