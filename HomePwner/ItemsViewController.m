@@ -31,14 +31,15 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    
-    return [[[BNRItemStore sharedStore] allItems] count];
+    return [[[BNRItemStore sharedStore] allItems] count] + 1;
 }
 
 - (UITableViewCell *)tableView: (UITableView *)tableView
     cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
+    
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
 
     if(!cell) {
@@ -47,13 +48,21 @@
                 reuseIdentifier:@"UITableViewCell"];
     }
     
-    BNRItem *p = [[[BNRItemStore sharedStore] allItems]
-                  objectAtIndex:[indexPath row]];
+    BNRItem *p;
     
-    [[cell textLabel] setText:[p description]];
-
+    if( [[[BNRItemStore sharedStore] allItems] count] > [indexPath row] ) {
+        p = [[[BNRItemStore sharedStore] allItems]
+                      objectAtIndex:[indexPath row]];
+        [[cell textLabel] setText:[p description]];
+    }else {
+        [[cell textLabel] setText:@"No more rows"];
+    }
+    
+    //NSLog(@"%d %@", [indexPath row], p);
+    
     return cell;
 }
+
 
 - (UIView *)headerView
 {
@@ -76,6 +85,7 @@
 
 - (IBAction)toggleEditingMode:(id)sender
 {
+    
     if( [self isEditing] ) {
         [sender setTitle:@"Edit" forState:UIControlStateNormal];
         [self setEditing:NO animated:YES];
@@ -97,10 +107,13 @@
     [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
                             withRowAnimation:UITableViewRowAnimationTop];
 }
+
+
 - (void)tableView:(UITableView *)tableView
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     BNRItemStore *ps = [BNRItemStore sharedStore];
     NSArray *items = [ps allItems];
     BNRItem *p = [items objectAtIndex:[indexPath row]];
@@ -109,4 +122,29 @@
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                      withRowAnimation:UITableViewRowAnimationFade];
 }
+
+
+- (void)tableView:(UITableView *)tableView
+moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+      toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    
+    if( [[[BNRItemStore sharedStore] allItems] count] <= [destinationIndexPath row] ) {
+        [tableView reloadData];
+        return;
+    }
+    
+    [[BNRItemStore sharedStore] moveItemAtIndex:[sourceIndexPath row]
+                                        toIndex:[destinationIndexPath row]];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [indexPath row] < [[[BNRItemStore sharedStore] allItems] count] ? YES : NO;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Remove";
+}
+
 @end
