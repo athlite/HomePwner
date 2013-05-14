@@ -147,4 +147,22 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     return @"Remove";
 }
 
+- (void)tableView:(UITableView*)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if( [[[BNRItemStore sharedStore] allItems] count] <= [indexPath row] ) return;
+    
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    BNRItem *selectedItem = [[[BNRItemStore sharedStore] allItems] objectAtIndex:[indexPath row]];
+    [detailViewController setItem:selectedItem];
+    [[self navigationController] pushViewController:detailViewController animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[self tableView] reloadData];
+}
+
 @end
+

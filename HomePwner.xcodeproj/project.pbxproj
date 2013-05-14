@@ -20,6 +20,8 @@
 		803C48391732508100EBC97C /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C48381732508100EBC97C /* ItemsViewController.m */; };
 		803C483C173252C100EBC97C /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C483B173252C100EBC97C /* BNRItem.m */; };
 		803C483F173268E600EBC97C /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 803C483E173268E600EBC97C /* BNRItemStore.m */; };
+		80F328C1174255E800688A3A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F328BF174255E800688A3A /* DetailViewController.m */; };
+		80F328C2174255E800688A3A /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80F328C0174255E800688A3A /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,9 @@
 		803C483B173252C100EBC97C /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		803C483D173268E500EBC97C /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		803C483E173268E600EBC97C /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
+		80F328BE174255E800688A3A /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		80F328BF174255E800688A3A /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		80F328C0174255E800688A3A /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,13 +94,9 @@
 		803C482017324C6E00EBC97C /* HomePwner */ = {
 			isa = PBXGroup;
 			children = (
-				803C483A173252C100EBC97C /* BNRItem.h */,
-				803C483B173252C100EBC97C /* BNRItem.m */,
-				803C483D173268E500EBC97C /* BNRItemStore.h */,
-				803C483E173268E600EBC97C /* BNRItemStore.m */,
-				8023E8AE1733F0F9002C1E98 /* HeaderView.xib */,
-				803C48371732508100EBC97C /* ItemsViewController.h */,
-				803C48381732508100EBC97C /* ItemsViewController.m */,
+				80F328C5174278C200688A3A /* models */,
+				80F328C4174278AC00688A3A /* controllers */,
+				80F328C31742789600688A3A /* xib */,
 				803C482917324C6E00EBC97C /* HomePwnerAppDelegate.h */,
 				803C482A17324C6E00EBC97C /* HomePwnerAppDelegate.m */,
 				803C482117324C6E00EBC97C /* Supporting Files */,
@@ -115,6 +116,37 @@
 				803C483017324C6E00EBC97C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80F328C31742789600688A3A /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				8023E8AE1733F0F9002C1E98 /* HeaderView.xib */,
+				80F328C0174255E800688A3A /* DetailViewController.xib */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
+		80F328C4174278AC00688A3A /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				80F328BE174255E800688A3A /* DetailViewController.h */,
+				80F328BF174255E800688A3A /* DetailViewController.m */,
+				803C48371732508100EBC97C /* ItemsViewController.h */,
+				803C48381732508100EBC97C /* ItemsViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		80F328C5174278C200688A3A /* models */ = {
+			isa = PBXGroup;
+			children = (
+				803C483A173252C100EBC97C /* BNRItem.h */,
+				803C483B173252C100EBC97C /* BNRItem.m */,
+				803C483D173268E500EBC97C /* BNRItemStore.h */,
+				803C483E173268E600EBC97C /* BNRItemStore.m */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +206,7 @@
 				803C482F17324C6E00EBC97C /* Default@2x.png in Resources */,
 				803C483117324C6E00EBC97C /* Default-568h@2x.png in Resources */,
 				8023E8AF1733F0F9002C1E98 /* HeaderView.xib in Resources */,
+				80F328C2174255E800688A3A /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +222,7 @@
 				803C48391732508100EBC97C /* ItemsViewController.m in Sources */,
 				803C483C173252C100EBC97C /* BNRItem.m in Sources */,
 				803C483F173268E600EBC97C /* BNRItemStore.m in Sources */,
+				80F328C1174255E800688A3A /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
