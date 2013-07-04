@@ -16,6 +16,20 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if(self) {
+        
+        UINavigationItem *n = [self navigationItem];
+        [n setTitle:@"HomePwner"];
+        
+        // Create a new bar button item that will send
+        // addNewItem to ItemsViewController
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                target:self
+                                action:@selector(addNewItem:)];
+        [[self navigationItem] setRightBarButtonItem:bbi];
+        
+        [[self navigationItem] setLeftBarButtonItem: [self editButtonItem]];
+        
         for(int i=0; i < 5; i++) {
             [[BNRItemStore sharedStore] createItem];
         }
@@ -38,8 +52,6 @@
     cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
 
     if(!cell) {
@@ -54,45 +66,11 @@
         p = [[[BNRItemStore sharedStore] allItems]
                       objectAtIndex:[indexPath row]];
         [[cell textLabel] setText:[p description]];
-    }else {
+    } else {
         [[cell textLabel] setText:@"No more rows"];
     }
     
-    //NSLog(@"%d %@", [indexPath row], p);
-    
     return cell;
-}
-
-
-- (UIView *)headerView
-{
-    
-    if(!headerView) {
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-    }
-    return headerView;
-}
-
-- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)sec
-{
-    return [self headerView];
-}
-
-- (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)sec
-{
-    return [[self headerView] bounds].size.height;
-}
-
-- (IBAction)toggleEditingMode:(id)sender
-{
-    
-    if( [self isEditing] ) {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        [self setEditing:NO animated:YES];
-    } else {
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        [self setEditing:YES animated:YES];
-    }
 }
 
 - (IBAction)addNewItem:(id)sender
