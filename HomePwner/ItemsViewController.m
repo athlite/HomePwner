@@ -29,7 +29,7 @@
         [[self navigationItem] setRightBarButtonItem:bbi];
         
         [[self navigationItem] setLeftBarButtonItem: [self editButtonItem]];
-        
+
         for(int i=0; i < 5; i++) {
             [[BNRItemStore sharedStore] createItem];
         }
